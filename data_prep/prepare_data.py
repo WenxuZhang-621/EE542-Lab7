@@ -23,12 +23,16 @@ import io
 import json
 import os
 import shutil
+import sys
 
 import numpy as np
 import pyarrow.parquet as pq
 from PIL import Image
 
-CLASSES = ["cat", "dog"]  # HF ClassLabel names; index == label
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+import config  # noqa: E402
+
+CLASSES = config.CLASSES  # matches the HF ClassLabel names; index == label
 
 
 def sha256(path):
@@ -75,12 +79,12 @@ def count(split_rows):
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--parquet-dir", required=True, help="folder with train-*.parquet")
-    ap.add_argument("--out", default="data")
-    ap.add_argument("--small-out", default="data_small")
+    ap.add_argument("--out", default=config.FULL_DATA_DIR)
+    ap.add_argument("--small-out", default=config.DATA_DIR)
     ap.add_argument("--test-frac", type=float, default=0.2)
     ap.add_argument("--small-train-per-class", type=int, default=1000)
     ap.add_argument("--small-test-per-class", type=int, default=500)
-    ap.add_argument("--seed", type=int, default=542)
+    ap.add_argument("--seed", type=int, default=config.SEED)
     args = ap.parse_args()
 
     parquet_files = sorted(glob.glob(os.path.join(args.parquet_dir, "train-*.parquet")))

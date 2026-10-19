@@ -7,6 +7,7 @@ EE542-Lab7/
 ├── README.md
 ├── requirements.txt
 ├── .gitignore
+├── config.py                  # shared settings: dataset, image size, labels, seed, epochs
 ├── part1_mlp/                 # A: Part I
 │   ├── mlp.py                 #   2-layer MLP with SGD and backprop
 │   └── run_examples.py        #   1D regression, rings, three blobs
@@ -52,29 +53,4 @@ The split is deterministic (seed 542), so everyone gets the same files.
 
 Labels are cat=0 and dog=1. Train and test never overlap.
 
-## Conventions for Part II and Part III
-
-| Setting | Part II (NumPy) | Part III (PyTorch) |
-|---|---|---|
-| Dataset | `data_small/` | `data_small/` |
-| Input | 64×64 RGB, [0, 1] | 64×64 RGB, [0, 1] |
-| Loss / output | MSE, ReLU output, dog if > 0.5 | MSE, ReLU output, dog if > 0.5 |
-| Epochs | 10 | 10 |
-| Optimizer | SGD lr 0.001 (FC only) | Adam lr 0.001 |
-| Batch size | 1 | 64 |
-| Seed | 542 | 542 |
-
-**Timing.** Use `time.perf_counter()` and record three times separately:
-
-- `load_time_s`: decode the images;
-- `train_time_s`: all epochs;
-- `test_time_s`: one pass over the test set.
-
-On GPU, call `torch.cuda.synchronize()` before reading the clock.
-
-**Results.** Write `results/part2_numpy.json` or `results/part3_torch.json` with these keys: `part`, `dataset`, `device`, `n_train`, `n_test`, `epochs`, `batch_size`, `load_time_s`, `train_time_s`, `test_time_s`, `train_imgs_per_s`, `test_imgs_per_s`, `test_accuracy` and `started_at`.
-
-## Fixes to the handout code (PDF p.11)
-
-- `W_fc` should have 31×31 = 961 rows, not `32*32*3`. A 3×3 valid conv on 64×64 gives 62×62, and pooling gives 31×31.
-- `load_data` does not shuffle before the 80/20 split, so the test set is all dogs. Use the `test/` folders instead.
+Shared settings live in `config.py`. Import them with `import config` instead of hard-coding the values.
