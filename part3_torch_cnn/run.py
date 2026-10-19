@@ -76,12 +76,16 @@ def cpu_name():
 
 
 def gpu_driver():
-    try:
-        out = subprocess.run(["nvidia-smi", "--query-gpu=driver_version", "--format=csv,noheader"],
-                             capture_output=True, text=True, timeout=10)
-        return out.stdout.strip().splitlines()[0] if out.returncode == 0 else None
-    except (OSError, subprocess.TimeoutExpired, IndexError):
-        return None
+    # Under WSL2 nvidia-smi lives in /usr/lib/wsl/lib, which may not be on PATH.
+    for exe in ("nvidia-smi", "/usr/lib/wsl/lib/nvidia-smi"):
+        try:
+            out = subprocess.run([exe, "--query-gpu=driver_version", "--format=csv,noheader"],
+                                 capture_output=True, text=True, timeout=10)
+            if out.returncode == 0 and out.stdout.strip():
+                return out.stdout.strip().splitlines()[0]
+        except (OSError, subprocess.TimeoutExpired):
+            continue
+    return None
 
 
 def environment(device):
