@@ -2,6 +2,14 @@
 
 NumPy MLP (Part I), NumPy CNN (Part II) and PyTorch GPU CNN (Part III) on Hugging Face `microsoft/cats_vs_dogs`.
 
+## Team
+
+| Member | Parts |
+|---|---|
+| A — Wenxu Zhang | Part I: NumPy MLP and the three examples; Part II: dataset preparation; shared config |
+| B — Xiaopeng Wu | Part II: NumPy CNN, evaluation on unseen images, timing |
+| C — Fengmao Xie | Part III: PyTorch CNN on GPU, evaluation, timing; NumPy vs GPU comparison |
+
 ```text
 EE542-Lab7/
 ├── README.md
