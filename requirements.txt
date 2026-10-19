@@ -1,0 +1,7 @@
+numpy
+pillow
+pyarrow
+matplotlib
+# Part III only (CUDA build on the GPU machine):
+# torch
+# torchvision

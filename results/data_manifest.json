@@ -1,0 +1,32 @@
+{
+  "source": "https://huggingface.co/datasets/microsoft/cats_vs_dogs",
+  "parquet_sha256": {
+    "train-00000-of-00002.parquet": "d2a40bc460fc9ac12a4a0edbe44476cbed5dd0829a8cbc08af9bcbbea5cc9620",
+    "train-00001-of-00002.parquet": "568276cea0e7ee4173847ab3db33d3b64c3ec8fd061e2f3b336d0f48d791421e"
+  },
+  "seed": 542,
+  "labels": {
+    "cat": 0,
+    "dog": 1
+  },
+  "decodable_images": 23410,
+  "skipped_row_ids": [],
+  "counts": {
+    "train": {
+      "cat": 9393,
+      "dog": 9335
+    },
+    "test": {
+      "cat": 2348,
+      "dog": 2334
+    },
+    "small_train": {
+      "cat": 1000,
+      "dog": 1000
+    },
+    "small_test": {
+      "cat": 500,
+      "dog": 500
+    }
+  }
+}

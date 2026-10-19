@@ -1,0 +1,50 @@
+# run: 2026-10-18 20:15:44 PDT  host: Darwin arm64  python: Python 3.11.16  numpy: 2.4.6
+=== Example 1: 1D regression (piecewise-linear) ===
+epoch   50/500  loss=0.0022
+epoch  100/500  loss=0.0019
+epoch  150/500  loss=0.0018
+epoch  200/500  loss=0.0018
+epoch  250/500  loss=0.0018
+epoch  300/500  loss=0.0018
+epoch  350/500  loss=0.0018
+epoch  400/500  loss=0.0018
+epoch  450/500  loss=0.0018
+epoch  500/500  loss=0.0018
+      x   target     pred
+[[-2.      0.75    0.7326]
+ [-1.5     0.6     0.6028]
+ [-1.      0.45    0.473 ]
+ [-0.5     0.3     0.3462]
+ [ 0.      0.35    0.2596]
+ [ 0.5     0.45    0.4908]
+ [ 1.      0.7     0.7194]
+ [ 1.5     0.95    0.9481]
+ [ 2.      1.2     1.1767]]
+max |pred - target| on test points: 0.0904
+
+=== Example 2: binary classification (concentric rings) ===
+epoch   20/200  loss=0.6085
+epoch   40/200  loss=0.5519
+epoch   60/200  loss=0.5043
+epoch   80/200  loss=0.4622
+epoch  100/200  loss=0.4246
+epoch  120/200  loss=0.3901
+epoch  140/200  loss=0.3585
+epoch  160/200  loss=0.3302
+epoch  180/200  loss=0.3047
+epoch  200/200  loss=0.2816
+train accuracy: 0.99875
+
+=== Example 3: multiclass classification (3 blobs) ===
+epoch   20/200  loss=0.3161
+epoch   40/200  loss=0.2594
+epoch   60/200  loss=0.2275
+epoch   80/200  loss=0.2056
+epoch  100/200  loss=0.1896
+epoch  120/200  loss=0.1764
+epoch  140/200  loss=0.1661
+epoch  160/200  loss=0.1573
+epoch  180/200  loss=0.1500
+epoch  200/200  loss=0.1440
+train acc: 0.9511111111111111
+# exit=0
