@@ -1,0 +1,257 @@
+{
+  "schema_version": 1,
+  "part": "part2_numpy",
+  "created_at_utc": "2026-10-19T22:19:11.889973+00:00",
+  "framework": "numpy",
+  "device": "cpu",
+  "dataset": "data_small",
+  "num_train": 2000,
+  "num_test": 1000,
+  "epochs": 10,
+  "seed": 542,
+  "accuracy": 0.5,
+  "train_seconds": 2.1098399459988286,
+  "test_seconds": 0.10789205899891385,
+  "test_images_per_second": 9268.52271871155,
+  "settings": {
+    "image_size": 64,
+    "classes": [
+      "cat",
+      "dog"
+    ],
+    "threshold": 0.5,
+    "learning_rate": 0.001,
+    "optimizer": "online SGD",
+    "optimizer_batch_size": 1,
+    "feature_batch_size": 64,
+    "eval_block_size": 256,
+    "dtype": "float32",
+    "preprocessing": "Pillow RGB, BILINEAR resize, /255.0; NHWC",
+    "loss": "MSE",
+    "feature_cache": false
+  },
+  "architecture": {
+    "conv_filter_shape": [
+      3,
+      3,
+      3
+    ],
+    "conv_padding": "valid",
+    "conv_output_shape": [
+      62,
+      62
+    ],
+    "pool_size": 2,
+    "flatten_dim": 961,
+    "fc_output_dim": 1,
+    "output_activation": "ReLU",
+    "trainable_parameters": 962,
+    "fixed_parameters": 27
+  },
+  "data": {
+    "counts": {
+      "train": {
+        "cat": 1000,
+        "dog": 1000
+      },
+      "test": {
+        "cat": 500,
+        "dog": 500
+      }
+    },
+    "fingerprints_sha256": {
+      "train": "9b3a4eefae7f33069e2636427fd78a82743bebbe6100c8e60539b5fd00c9f117",
+      "test": "d4d31e4da5c253f52d54af3e570aeb14fd7f13443fa475a673111c6149650f2c"
+    },
+    "fingerprint_format": "SHA256 of sorted class/filename records: label<TAB>relative_path<TAB>file_sha256<LF>",
+    "overlap_check": "No shared relative filenames or identical file bytes",
+    "preparation_manifest": {
+      "source": "https://huggingface.co/datasets/microsoft/cats_vs_dogs",
+      "parquet_sha256": {
+        "train-00000-of-00002.parquet": "d2a40bc460fc9ac12a4a0edbe44476cbed5dd0829a8cbc08af9bcbbea5cc9620",
+        "train-00001-of-00002.parquet": "568276cea0e7ee4173847ab3db33d3b64c3ec8fd061e2f3b336d0f48d791421e"
+      },
+      "seed": 542,
+      "labels": {
+        "cat": 0,
+        "dog": 1
+      },
+      "decodable_images": 23410,
+      "skipped_row_ids": [],
+      "counts": {
+        "train": {
+          "cat": 9393,
+          "dog": 9335
+        },
+        "test": {
+          "cat": 2348,
+          "dog": 2334
+        },
+        "small_train": {
+          "cat": 1000,
+          "dog": 1000
+        },
+        "small_test": {
+          "cat": 500,
+          "dog": 500
+        }
+      }
+    }
+  },
+  "timing": {
+    "train_load_preprocess_seconds": 1.7744634800001222,
+    "test_load_preprocess_seconds": 0.9078181360000599,
+    "load_preprocess_seconds": 2.682281616000182,
+    "train_seconds": 2.1098399459988286,
+    "test_seconds": 0.10789205899891385,
+    "pipeline_seconds_before_export": 4.90503682400049,
+    "train_images_per_second": 9479.392044846185,
+    "test_images_per_second": 9268.52271871155,
+    "definition": "perf_counter; train=sum epoch compute timers (shuffle, CNN, online SGD); test=sum block timers (CNN, threshold, metrics); loading, hash checks, console output and file export excluded from compute timers. No feature cache. One run, no explicit warm-up."
+  },
+  "metrics": {
+    "accuracy": 0.5,
+    "mse": 0.2501862218237697,
+    "correct": 500,
+    "confusion_matrix": [
+      [
+        0,
+        500
+      ],
+      [
+        0,
+        500
+      ]
+    ],
+    "confusion_matrix_axes": "rows=true, columns=predicted; cat=0, dog=1",
+    "per_class_accuracy": {
+      "cat": 0.0,
+      "dog": 1.0
+    },
+    "zero_output_fraction": 0.0
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "online_mse": 0.2825222543822183,
+      "seconds": 0.21399517100144294
+    },
+    {
+      "epoch": 2,
+      "online_mse": 0.2502071936641568,
+      "seconds": 0.21010699900034524
+    },
+    {
+      "epoch": 3,
+      "online_mse": 0.2504308240901397,
+      "seconds": 0.20983564400012256
+    },
+    {
+      "epoch": 4,
+      "online_mse": 0.2503256036884631,
+      "seconds": 0.21511513799850945
+    },
+    {
+      "epoch": 5,
+      "online_mse": 0.2503470096213045,
+      "seconds": 0.21047129799990216
+    },
+    {
+      "epoch": 6,
+      "online_mse": 0.25049285642628205,
+      "seconds": 0.21003681299953314
+    },
+    {
+      "epoch": 7,
+      "online_mse": 0.2503340071208476,
+      "seconds": 0.20984070799931942
+    },
+    {
+      "epoch": 8,
+      "online_mse": 0.250226768681699,
+      "seconds": 0.21059988500019244
+    },
+    {
+      "epoch": 9,
+      "online_mse": 0.2504540040255848,
+      "seconds": 0.20982278900009987
+    },
+    {
+      "epoch": 10,
+      "online_mse": 0.25031620646614705,
+      "seconds": 0.2100155009993614
+    }
+  ],
+  "test_blocks": [
+    {
+      "block": 1,
+      "start": 0,
+      "stop": 256,
+      "num_images": 256,
+      "correct": 0,
+      "accuracy": 0.0,
+      "mse": 0.26362308646694593,
+      "seconds": 0.027157845001056558,
+      "images_per_second": 9426.37385219779
+    },
+    {
+      "block": 2,
+      "start": 256,
+      "stop": 512,
+      "num_images": 256,
+      "correct": 12,
+      "accuracy": 0.046875,
+      "mse": 0.2623619137424811,
+      "seconds": 0.02686404899941408,
+      "images_per_second": 9529.46445286723
+    },
+    {
+      "block": 3,
+      "start": 512,
+      "stop": 768,
+      "num_images": 256,
+      "correct": 256,
+      "accuracy": 1.0,
+      "mse": 0.2367455753239131,
+      "seconds": 0.027924746998905903,
+      "images_per_second": 9167.495770329813
+    },
+    {
+      "block": 4,
+      "start": 768,
+      "stop": 1000,
+      "num_images": 232,
+      "correct": 232,
+      "accuracy": 1.0,
+      "mse": 0.23675514865187347,
+      "seconds": 0.025945417999537312,
+      "images_per_second": 8941.848614816585
+    }
+  ],
+  "environment": {
+    "python": "3.12.3",
+    "numpy": "2.5.4",
+    "pillow": "13.0.0",
+    "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "cpu": "AMD Ryzen 7 9800X3D 8-Core Processor",
+    "logical_cpus": 16,
+    "thread_environment": {
+      "OMP_NUM_THREADS": null,
+      "OPENBLAS_NUM_THREADS": null,
+      "MKL_NUM_THREADS": null
+    }
+  },
+  "source_sha256": {
+    "run.py": "aea41a14a7ad9fe2ad9787534b339e3647e993f8d055f879725e843e89c7b8fb",
+    "model.py": "626e115c9471aadd9b3bb09af431a34df39d3568a7d775116ef6ae56ecf8a8a6",
+    "data.py": "44905cd651fc302d40db26d1b956987a968043aaf25b76dd59954730e7e66036"
+  },
+  "warnings": [
+    "Only one class was predicted on the test set."
+  ],
+  "comparison_note": "Part II uses one fixed random filter and trains only FC. Part III has two trainable convolution layers; speed/accuracy differences are not solely GPU effects. Match data, resize interpolation and timing boundaries.",
+  "artifacts": {
+    "model": "numpy_part2_code_model.npz",
+    "predictions": "numpy_part2_code_predictions.csv"
+  }
+}

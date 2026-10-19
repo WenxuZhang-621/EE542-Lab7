@@ -74,15 +74,34 @@ initial weights. With `--train-mode online` it repeats Part II's training
 step for step; `test_part3.py` checks that it produces the same weights as
 `part2_numpy_cnn`, and that both parts read the same files and pixels.
 
-## Finding: the handout's ReLU output can stop learning
+## Results (RTX 5070 Ti, full tables in `compare/README.md`)
+
+| Comparison | Result |
+|---|---|
+| CatDogCNN, GPU vs CPU (same PyTorch code, Ryzen 7 9800X3D) | training 8.5x faster on `data_small/`, 9.4x on the full `data/`; same accuracy |
+| CatDogCNN vs Part II's network | 68.8% +- 0.5 (sigmoid + BCE, four seeds) and 78.4% on the full data, against 50% (Part II predicts one class) |
+| Part II's network, Part II's online SGD | PyTorch GPU is 4.8x **slower** than NumPy: one tiny update per image, so the time goes to launching kernels |
+| Part II's network, mini-batches of 64 | PyTorch GPU 11x faster than Part II's NumPy code (a different algorithm, so a different result) |
+| Input pipeline | decoding images every epoch makes training 45x slower (12x with 4 DataLoader workers) than keeping decoded tensors on the GPU |
+| Batch size | throughput peaks at 256 (69,500 images/s); larger batches lose accuracy after a fixed 10 epochs |
+
+### Finding: the handout's ReLU output can stop learning
 
 With ReLU on the single output and MSE loss, if the output becomes zero for
 every image the gradient is zero and training stops; the network then
-predicts one class. In development runs on `data_small/` this happened for
-three of four seeds (542, 543, 545), while seed 544 reached 68.9%. With a
-logit output and `BCEWithLogitsLoss` (`--head bce`) all four seeds learned
-(67.1-69.6%). Both versions are reported; the handout's version is the main
-run.
+predicts one class. On the GPU this happened for three of four seeds (542,
+543, 545), while seed 544 reached 69.6%. With a logit output and
+`BCEWithLogitsLoss` (`--head bce`) all four seeds learned (68.4-69.4%). Both
+versions are reported; the handout's version is the main run
+(`results/part3_torch.json`).
+
+### Reproducibility
+
+Every run records its data fingerprints (identical to Part II's), settings,
+environment and the hashes of the source files. GPU training is not
+bit-for-bit reproducible (some cuDNN kernels change their summation order
+between runs), so repeating a configuration can move accuracy by a point or
+two; CPU runs repeat exactly.
 
 ## Files
 

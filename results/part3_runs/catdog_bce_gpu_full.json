@@ -1,0 +1,401 @@
+{
+  "schema_version": 1,
+  "part": "part3_torch",
+  "label": "catdog_bce_gpu_full",
+  "created_at_utc": "2026-10-19T22:21:00.866134+00:00",
+  "framework": "pytorch",
+  "device": "cuda",
+  "dataset": "data",
+  "num_train": 18728,
+  "num_test": 4682,
+  "epochs": 10,
+  "seed": 542,
+  "accuracy": 0.7838530540466309,
+  "train_seconds": 3.2950888149989623,
+  "test_seconds": 0.05733972999769321,
+  "test_images_per_second": 81653.68061880232,
+  "settings": {
+    "model": "catdog",
+    "head": "bce",
+    "train_mode": "batch",
+    "loader": "preload",
+    "num_workers": 0,
+    "learning_rate": 0.001,
+    "optimizer": "adam",
+    "optimizer_batch_size": 64,
+    "loss": "BCEWithLogits",
+    "image_size": 64,
+    "classes": [
+      "cat",
+      "dog"
+    ],
+    "threshold": 0.5,
+    "eval_block_size": 256,
+    "dtype": "float32",
+    "tf32_matmul": false,
+    "cudnn_benchmark": false,
+    "preprocessing": "ImageFolder (Pillow RGB), Resize BILINEAR, ToTensor (/255); NCHW"
+  },
+  "architecture": {
+    "class": "CatDogCNN",
+    "head": "bce",
+    "trainable_parameters": 1053921,
+    "fixed_parameters": 0,
+    "layers": "CatDogCNN(\n  (conv1): Conv2d(3, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))\n  (conv2): Conv2d(16, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))\n  (fc1): Linear(in_features=8192, out_features=128, bias=True)\n  (fc2): Linear(in_features=128, out_features=1, bias=True)\n)"
+  },
+  "data": {
+    "counts": {
+      "train": {
+        "cat": 9393,
+        "dog": 9335
+      },
+      "test": {
+        "cat": 2348,
+        "dog": 2334
+      }
+    },
+    "fingerprints_sha256": {
+      "train": "0c650e77a19d18e71f4f463975e4cc33926f2b4f1769f7436dbb67a185bccacc",
+      "test": "cb61fdef45a6af4089e900db54dddfb8cab30bf98f5d7d0fe0c9e3513ce4e7fc"
+    },
+    "fingerprint_format": "SHA256 of class/filename records: label<TAB>relative_path<TAB>file_sha256<LF> (same as Part II)",
+    "overlap_check": "No shared file names between train and test",
+    "preparation_manifest": {
+      "source": "https://huggingface.co/datasets/microsoft/cats_vs_dogs",
+      "parquet_sha256": {
+        "train-00000-of-00002.parquet": "d2a40bc460fc9ac12a4a0edbe44476cbed5dd0829a8cbc08af9bcbbea5cc9620",
+        "train-00001-of-00002.parquet": "568276cea0e7ee4173847ab3db33d3b64c3ec8fd061e2f3b336d0f48d791421e"
+      },
+      "seed": 542,
+      "labels": {
+        "cat": 0,
+        "dog": 1
+      },
+      "decodable_images": 23410,
+      "skipped_row_ids": [],
+      "counts": {
+        "train": {
+          "cat": 9393,
+          "dog": 9335
+        },
+        "test": {
+          "cat": 2348,
+          "dog": 2334
+        },
+        "small_train": {
+          "cat": 1000,
+          "dog": 1000
+        },
+        "small_test": {
+          "cat": 500,
+          "dog": 500
+        }
+      }
+    }
+  },
+  "timing": {
+    "train_load_preprocess_seconds": 16.94982619900111,
+    "test_load_preprocess_seconds": 4.231698301000506,
+    "load_preprocess_seconds": 21.181524500001615,
+    "host_to_device_seconds": 0.6134731050005939,
+    "train_seconds": 3.2950888149989623,
+    "test_seconds": 0.05733972999769321,
+    "pipeline_seconds_before_export": 25.932146137998643,
+    "train_images_per_second": 56836.100789610726,
+    "test_images_per_second": 81653.68061880232,
+    "peak_device_memory_bytes": 1320644608,
+    "definition": "perf_counter with device synchronization at both ends of every timer. train = sum of epoch timers (shuffle, forward, loss, backward, update); test = sum of block timers (forward, threshold, correct count). Image loading/decoding (preload mode), host-to-device copy, warm-up and export are timed separately or excluded. Warm-up: a few training steps on a throwaway copy of the model and one test block before timing."
+  },
+  "metrics": {
+    "accuracy": 0.7838530540466309,
+    "correct": 3670,
+    "mse": 0.1504676640033722,
+    "confusion_matrix": [
+      [
+        1669,
+        679
+      ],
+      [
+        333,
+        2001
+      ]
+    ],
+    "confusion_matrix_axes": "rows=true, columns=predicted; cat=0, dog=1",
+    "per_class_accuracy": {
+      "cat": 0.7108177172061328,
+      "dog": 0.8573264781491002
+    },
+    "zero_output_fraction": 0.0
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.6563887565576944,
+      "seconds": 0.3578595649996714
+    },
+    {
+      "epoch": 2,
+      "loss": 0.5767759692205521,
+      "seconds": 0.32546030299999984
+    },
+    {
+      "epoch": 3,
+      "loss": 0.5254976776918251,
+      "seconds": 0.32234732799952326
+    },
+    {
+      "epoch": 4,
+      "loss": 0.48531443560444254,
+      "seconds": 0.3240914319994772
+    },
+    {
+      "epoch": 5,
+      "loss": 0.4580629292536576,
+      "seconds": 0.32609570500062546
+    },
+    {
+      "epoch": 6,
+      "loss": 0.43369605754084795,
+      "seconds": 0.3277165449999302
+    },
+    {
+      "epoch": 7,
+      "loss": 0.413808477989174,
+      "seconds": 0.3256707959990308
+    },
+    {
+      "epoch": 8,
+      "loss": 0.3945064552825315,
+      "seconds": 0.3275475610007561
+    },
+    {
+      "epoch": 9,
+      "loss": 0.3722173861080334,
+      "seconds": 0.32862260399997467
+    },
+    {
+      "epoch": 10,
+      "loss": 0.36024933317592644,
+      "seconds": 0.32967697599997337
+    }
+  ],
+  "test_blocks": [
+    {
+      "block": 1,
+      "start": 0,
+      "stop": 256,
+      "num_images": 256,
+      "correct": 178,
+      "accuracy": 0.6953125,
+      "seconds": 0.03551820999928168,
+      "images_per_second": 7207.570426695977
+    },
+    {
+      "block": 2,
+      "start": 256,
+      "stop": 512,
+      "num_images": 256,
+      "correct": 186,
+      "accuracy": 0.7265625,
+      "seconds": 0.0011909969998669112,
+      "images_per_second": 214945.96546305902
+    },
+    {
+      "block": 3,
+      "start": 512,
+      "stop": 768,
+      "num_images": 256,
+      "correct": 179,
+      "accuracy": 0.69921875,
+      "seconds": 0.0011993400003120769,
+      "images_per_second": 213450.73117997145
+    },
+    {
+      "block": 4,
+      "start": 768,
+      "stop": 1024,
+      "num_images": 256,
+      "correct": 190,
+      "accuracy": 0.7421875,
+      "seconds": 0.0011762520007323474,
+      "images_per_second": 217640.4374577995
+    },
+    {
+      "block": 5,
+      "start": 1024,
+      "stop": 1280,
+      "num_images": 256,
+      "correct": 188,
+      "accuracy": 0.734375,
+      "seconds": 0.001196727998831193,
+      "images_per_second": 213916.6128393647
+    },
+    {
+      "block": 6,
+      "start": 1280,
+      "stop": 1536,
+      "num_images": 256,
+      "correct": 179,
+      "accuracy": 0.69921875,
+      "seconds": 0.001168353001048672,
+      "images_per_second": 219111.8606878431
+    },
+    {
+      "block": 7,
+      "start": 1536,
+      "stop": 1792,
+      "num_images": 256,
+      "correct": 176,
+      "accuracy": 0.6875,
+      "seconds": 0.0011814659992523957,
+      "images_per_second": 216679.9553791568
+    },
+    {
+      "block": 8,
+      "start": 1792,
+      "stop": 2048,
+      "num_images": 256,
+      "correct": 174,
+      "accuracy": 0.6796875,
+      "seconds": 0.001169634000689257,
+      "images_per_second": 218871.8862901908
+    },
+    {
+      "block": 9,
+      "start": 2048,
+      "stop": 2304,
+      "num_images": 256,
+      "correct": 185,
+      "accuracy": 0.72265625,
+      "seconds": 0.0011836869998660404,
+      "images_per_second": 216273.38986486453
+    },
+    {
+      "block": 10,
+      "start": 2304,
+      "stop": 2560,
+      "num_images": 256,
+      "correct": 221,
+      "accuracy": 0.86328125,
+      "seconds": 0.0011711610004567774,
+      "images_per_second": 218586.513639162
+    },
+    {
+      "block": 11,
+      "start": 2560,
+      "stop": 2816,
+      "num_images": 256,
+      "correct": 224,
+      "accuracy": 0.875,
+      "seconds": 0.0011871459992107702,
+      "images_per_second": 215643.2318941327
+    },
+    {
+      "block": 12,
+      "start": 2816,
+      "stop": 3072,
+      "num_images": 256,
+      "correct": 221,
+      "accuracy": 0.86328125,
+      "seconds": 0.0011671039992506849,
+      "images_per_second": 219346.34802413455
+    },
+    {
+      "block": 13,
+      "start": 3072,
+      "stop": 3328,
+      "num_images": 256,
+      "correct": 208,
+      "accuracy": 0.8125,
+      "seconds": 0.0011835109999083215,
+      "images_per_second": 216305.5518874185
+    },
+    {
+      "block": 14,
+      "start": 3328,
+      "stop": 3584,
+      "num_images": 256,
+      "correct": 219,
+      "accuracy": 0.85546875,
+      "seconds": 0.0011746410000341712,
+      "images_per_second": 217938.92771710912
+    },
+    {
+      "block": 15,
+      "start": 3584,
+      "stop": 3840,
+      "num_images": 256,
+      "correct": 225,
+      "accuracy": 0.87890625,
+      "seconds": 0.0011829640006908448,
+      "images_per_second": 216405.57096454105
+    },
+    {
+      "block": 16,
+      "start": 3840,
+      "stop": 4096,
+      "num_images": 256,
+      "correct": 219,
+      "accuracy": 0.85546875,
+      "seconds": 0.0011700879986165091,
+      "images_per_second": 218786.96329053008
+    },
+    {
+      "block": 17,
+      "start": 4096,
+      "stop": 4352,
+      "num_images": 256,
+      "correct": 209,
+      "accuracy": 0.81640625,
+      "seconds": 0.001195220000226982,
+      "images_per_second": 214186.50955588388
+    },
+    {
+      "block": 18,
+      "start": 4352,
+      "stop": 4608,
+      "num_images": 256,
+      "correct": 223,
+      "accuracy": 0.87109375,
+      "seconds": 0.0011713690000760835,
+      "images_per_second": 218547.69930173337
+    },
+    {
+      "block": 19,
+      "start": 4608,
+      "stop": 4682,
+      "num_images": 74,
+      "correct": 66,
+      "accuracy": 0.8918918918918919,
+      "seconds": 0.0017518589993414935,
+      "images_per_second": 42240.84245810643
+    }
+  ],
+  "environment": {
+    "python": "3.12.3",
+    "torch": "2.11.0+cu128",
+    "torchvision": "0.26.0+cu128",
+    "numpy": "2.5.4",
+    "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "cpu": "AMD Ryzen 7 9800X3D 8-Core Processor",
+    "logical_cpus": 16,
+    "torch_cpu_threads": 8,
+    "device": "cuda",
+    "gpu": "NVIDIA GeForce RTX 5070 Ti",
+    "gpu_capability": "sm_120",
+    "cuda_runtime": "12.8",
+    "cudnn": 91900,
+    "nvidia_driver": "610.88"
+  },
+  "source_sha256": {
+    "run.py": "0201463b81e90e548077da4e7c80c10ac64f728be15db5cf9dec94c5339482cd",
+    "model.py": "a39edb0209df0fac8fdcd8918fc9e731c4251318ed25ca46bf60474072eb6a6c",
+    "data.py": "278cc759b0d1a774b2b7050db0fe82b194283761cf2ccd6517a8e237c4525a18"
+  },
+  "warnings": [],
+  "comparison_note": "Part II trains one fixed random filter's FC layer with online SGD; CatDogCNN trains two convolution layers and two FC layers with Adam. Use the numpy_equiv runs to compare implementations on the same network.",
+  "artifacts": {
+    "model": "catdog_bce_gpu_full_model.pt",
+    "predictions": "catdog_bce_gpu_full_predictions.csv"
+  }
+}
