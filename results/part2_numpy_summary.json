@@ -1,0 +1,370 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-19T17:40:56.791851+00:00",
+  "protocol": {
+    "baseline": "results/part2_numpy.json",
+    "baseline_sha256": "b06bd18c7a882c35b5fb6c5a9a83ad93839d526aca382c9f46f13f5415d3ffc6",
+    "timing_group": "Original seed 542 run plus two same-seed repeats",
+    "sensitivity_group": "Seeds 542, 543, 544, 545; count seed 542 only once",
+    "new_experiments": [
+      {
+        "name": "seed542_run2",
+        "seed": 542,
+        "group": "timing_repeat"
+      },
+      {
+        "name": "seed542_run3",
+        "seed": 542,
+        "group": "timing_repeat"
+      },
+      {
+        "name": "seed543",
+        "seed": 543,
+        "group": "seed_sensitivity"
+      },
+      {
+        "name": "seed544",
+        "seed": 544,
+        "group": "seed_sensitivity"
+      },
+      {
+        "name": "seed545",
+        "seed": 545,
+        "group": "seed_sensitivity"
+      }
+    ],
+    "selection_policy": "Additional seeds declared before running them. Keep every result; no best-seed selection.",
+    "fixed": {
+      "dataset": "data_small",
+      "num_train": 2000,
+      "num_test": 1000,
+      "epochs": 10,
+      "settings": {
+        "image_size": 64,
+        "classes": [
+          "cat",
+          "dog"
+        ],
+        "threshold": 0.5,
+        "learning_rate": 0.001,
+        "optimizer": "online SGD",
+        "optimizer_batch_size": 1,
+        "feature_batch_size": 64,
+        "eval_block_size": 256,
+        "dtype": "float32",
+        "preprocessing": "Pillow RGB, BILINEAR resize, /255.0; NHWC",
+        "loss": "MSE",
+        "feature_cache": false
+      },
+      "architecture": {
+        "conv_filter_shape": [
+          3,
+          3,
+          3
+        ],
+        "conv_padding": "valid",
+        "conv_output_shape": [
+          62,
+          62
+        ],
+        "pool_size": 2,
+        "flatten_dim": 961,
+        "fc_output_dim": 1,
+        "output_activation": "ReLU",
+        "trainable_parameters": 962,
+        "fixed_parameters": 27
+      },
+      "source_sha256": {
+        "run.py": "aea41a14a7ad9fe2ad9787534b339e3647e993f8d055f879725e843e89c7b8fb",
+        "model.py": "626e115c9471aadd9b3bb09af431a34df39d3568a7d775116ef6ae56ecf8a8a6",
+        "data.py": "44905cd651fc302d40db26d1b956987a968043aaf25b76dd59954730e7e66036"
+      }
+    },
+    "data_split_seed": 542,
+    "execution": "Sequential fresh Python processes; model initialized and trained from scratch in each run. No explicit warm-up or OS filesystem cache control. Original run occurred earlier in this session."
+  },
+  "total_complete_runs": 6,
+  "new_complete_runs": 5,
+  "runs": [
+    {
+      "run_id": "seed542_run1",
+      "group": "timing_repeat",
+      "seed": 542,
+      "result_file": "results/part2_numpy.json",
+      "result_sha256": "b06bd18c7a882c35b5fb6c5a9a83ad93839d526aca382c9f46f13f5415d3ffc6",
+      "accuracy": 0.5,
+      "mse": 0.25018623980253646,
+      "train_seconds": 2.809945800000037,
+      "test_seconds": 0.12095600000009199,
+      "load_preprocess_seconds": 4.130592799999931,
+      "test_images_per_second": 8267.469162333737,
+      "predicted_cat": 0,
+      "predicted_dog": 1000,
+      "confusion_matrix": [
+        [
+          0,
+          500
+        ],
+        [
+          0,
+          500
+        ]
+      ],
+      "zero_output_fraction": 0.0,
+      "identical_prediction_csv_to_baseline": true,
+      "training_diagnostics": {
+        "training_pooled_nonzero_fraction": 0.0008277835587929241,
+        "initial_training_zero_output_fraction": 0.9085,
+        "final_training_zero_output_fraction": 0.0,
+        "final_training_accuracy": 0.5,
+        "final_training_score_min": 0.5123031139373779,
+        "final_training_score_max": 0.5150381922721863,
+        "fixed_kernel_sum": -0.5117775201797485
+      }
+    },
+    {
+      "run_id": "seed542_run2",
+      "group": "timing_repeat",
+      "seed": 542,
+      "result_file": "results/part2_numpy_repeats/seed542_run2.json",
+      "result_sha256": "4a023f664e2f6407c175caf4362a83acf1e3fa5a1173b2e6a12715de4064ff55",
+      "accuracy": 0.5,
+      "mse": 0.25018623980253646,
+      "train_seconds": 2.664445300000125,
+      "test_seconds": 0.13552869999989525,
+      "load_preprocess_seconds": 4.022796599999992,
+      "test_images_per_second": 7378.510972220444,
+      "predicted_cat": 0,
+      "predicted_dog": 1000,
+      "confusion_matrix": [
+        [
+          0,
+          500
+        ],
+        [
+          0,
+          500
+        ]
+      ],
+      "zero_output_fraction": 0.0,
+      "identical_prediction_csv_to_baseline": true,
+      "training_diagnostics": {
+        "training_pooled_nonzero_fraction": 0.0008277835587929241,
+        "initial_training_zero_output_fraction": 0.9085,
+        "final_training_zero_output_fraction": 0.0,
+        "final_training_accuracy": 0.5,
+        "final_training_score_min": 0.5123031139373779,
+        "final_training_score_max": 0.5150381922721863,
+        "fixed_kernel_sum": -0.5117775201797485
+      }
+    },
+    {
+      "run_id": "seed542_run3",
+      "group": "timing_repeat",
+      "seed": 542,
+      "result_file": "results/part2_numpy_repeats/seed542_run3.json",
+      "result_sha256": "bce0ac77f98a32f5474d60427005af3276ce2c9abc8b33cdb72f5a7f61513cfa",
+      "accuracy": 0.5,
+      "mse": 0.25018623980253646,
+      "train_seconds": 2.598320699999931,
+      "test_seconds": 0.12104539999995723,
+      "load_preprocess_seconds": 3.951612700000169,
+      "test_images_per_second": 8261.363091867624,
+      "predicted_cat": 0,
+      "predicted_dog": 1000,
+      "confusion_matrix": [
+        [
+          0,
+          500
+        ],
+        [
+          0,
+          500
+        ]
+      ],
+      "zero_output_fraction": 0.0,
+      "identical_prediction_csv_to_baseline": true,
+      "training_diagnostics": {
+        "training_pooled_nonzero_fraction": 0.0008277835587929241,
+        "initial_training_zero_output_fraction": 0.9085,
+        "final_training_zero_output_fraction": 0.0,
+        "final_training_accuracy": 0.5,
+        "final_training_score_min": 0.5123031139373779,
+        "final_training_score_max": 0.5150381922721863,
+        "fixed_kernel_sum": -0.5117775201797485
+      }
+    },
+    {
+      "run_id": "seed543",
+      "group": "seed_sensitivity",
+      "seed": 543,
+      "result_file": "results/part2_numpy_repeats/seed543.json",
+      "result_sha256": "7e6b5f12a13fcb9821f16829585ca8e6021e940e6090bed81776b6824f8e2a40",
+      "accuracy": 0.5,
+      "mse": 0.25050848277972637,
+      "train_seconds": 2.6413142999999764,
+      "test_seconds": 0.114739000000327,
+      "load_preprocess_seconds": 4.267198999999891,
+      "test_images_per_second": 8715.43241615449,
+      "predicted_cat": 1000,
+      "predicted_dog": 0,
+      "confusion_matrix": [
+        [
+          500,
+          0
+        ],
+        [
+          500,
+          0
+        ]
+      ],
+      "zero_output_fraction": 0.0,
+      "identical_prediction_csv_to_baseline": false,
+      "training_diagnostics": {
+        "training_pooled_nonzero_fraction": 0.005275754422476587,
+        "initial_training_zero_output_fraction": 0.701,
+        "final_training_zero_output_fraction": 0.0,
+        "final_training_accuracy": 0.5,
+        "final_training_score_min": 0.4732542037963867,
+        "final_training_score_max": 0.4843052923679352,
+        "fixed_kernel_sum": -0.5328813791275024
+      }
+    },
+    {
+      "run_id": "seed544",
+      "group": "seed_sensitivity",
+      "seed": 544,
+      "result_file": "results/part2_numpy_repeats/seed544.json",
+      "result_sha256": "612a6ab6dc87758fb207b2b007b147ae394e68d7116873490c6f3be54a52ddac",
+      "accuracy": 0.558,
+      "mse": 0.24749319990474902,
+      "train_seconds": 2.5801638000000366,
+      "test_seconds": 0.13787769999976263,
+      "load_preprocess_seconds": 3.9444032999999763,
+      "test_images_per_second": 7252.804478184084,
+      "predicted_cat": 876,
+      "predicted_dog": 124,
+      "confusion_matrix": [
+        [
+          467,
+          33
+        ],
+        [
+          409,
+          91
+        ]
+      ],
+      "zero_output_fraction": 0.0,
+      "identical_prediction_csv_to_baseline": false,
+      "training_diagnostics": {
+        "training_pooled_nonzero_fraction": 0.15542872008324662,
+        "initial_training_zero_output_fraction": 0.5895,
+        "final_training_zero_output_fraction": 0.0,
+        "final_training_accuracy": 0.5585,
+        "final_training_score_min": 0.3952336609363556,
+        "final_training_score_max": 0.5673129558563232,
+        "fixed_kernel_sum": -0.11257515847682953
+      }
+    },
+    {
+      "run_id": "seed545",
+      "group": "seed_sensitivity",
+      "seed": 545,
+      "result_file": "results/part2_numpy_repeats/seed545.json",
+      "result_sha256": "ea4e70f1652fdfcc1d8382c0991b5de129391084c58f5d4f5ac999e3afb3b5c9",
+      "accuracy": 0.571,
+      "mse": 0.24179765248878682,
+      "train_seconds": 2.626591600000438,
+      "test_seconds": 0.11469630000010511,
+      "load_preprocess_seconds": 3.809327800000119,
+      "test_images_per_second": 8718.677062809207,
+      "predicted_cat": 599,
+      "predicted_dog": 401,
+      "confusion_matrix": [
+        [
+          335,
+          165
+        ],
+        [
+          264,
+          236
+        ]
+      ],
+      "zero_output_fraction": 0.0,
+      "identical_prediction_csv_to_baseline": false,
+      "training_diagnostics": {
+        "training_pooled_nonzero_fraction": 0.18025598335067639,
+        "initial_training_zero_output_fraction": 0.5275,
+        "final_training_zero_output_fraction": 0.0,
+        "final_training_accuracy": 0.6235,
+        "final_training_score_min": 0.34228697419166565,
+        "final_training_score_max": 0.7826510667800903,
+        "fixed_kernel_sum": -0.18993717432022095
+      }
+    }
+  ],
+  "timing_summary": {
+    "train_seconds": {
+      "n": 3,
+      "mean": 2.6909039333333644,
+      "sample_std": 0.10826513841449975,
+      "min": 2.598320699999931,
+      "max": 2.809945800000037
+    },
+    "test_seconds": {
+      "n": 3,
+      "mean": 0.12584336666664817,
+      "sample_std": 0.008387863817568479,
+      "min": 0.12095600000009199,
+      "max": 0.13552869999989525
+    },
+    "load_preprocess_seconds": {
+      "n": 3,
+      "mean": 4.0350007000000305,
+      "sample_std": 0.09011200858703261,
+      "min": 3.951612700000169,
+      "max": 4.130592799999931
+    },
+    "test_images_per_second": {
+      "n": 3,
+      "mean": 7969.114408807269,
+      "sample_std": 511.48669142535806,
+      "min": 7378.510972220444,
+      "max": 8267.469162333737
+    }
+  },
+  "seed_sensitivity_summary": {
+    "unique_seeds": [
+      542,
+      543,
+      544,
+      545
+    ],
+    "accuracy": {
+      "n": 4,
+      "mean": 0.53225,
+      "sample_std": 0.037615378060929634,
+      "min": 0.5,
+      "max": 0.571
+    },
+    "mse": {
+      "n": 4,
+      "mean": 0.24749639374394966,
+      "sample_std": 0.00403251841377259,
+      "min": 0.24179765248878682,
+      "max": 0.25050848277972637
+    }
+  },
+  "std_definition": "Sample standard deviation (ddof=1). Timing statistics use only three seed-542 runs; seed sensitivity counts each of four seeds once.",
+  "data_fingerprints_sha256": {
+    "train": "9b3a4eefae7f33069e2636427fd78a82743bebbe6100c8e60539b5fd00c9f117",
+    "test": "d4d31e4da5c253f52d54af3e570aeb14fd7f13443fa475a673111c6149650f2c"
+  },
+  "diagnostics_note": "Measured on all 2000 training images after timed runs; not included in training/test compute timings. Changing --seed changes fixed filter, FC initialization and training shuffle together; this experiment cannot separate their effects.",
+  "limitations": [
+    "Same held-out images in every run: no additional independent test images.",
+    "Three timing samples and four seeds are small samples, not proof of general robustness.",
+    "No hardware isolation or OS cache control; original baseline run predates the repeats.",
+    "Architecture and decision threshold unchanged; all outcomes retained, no test-based model selection."
+  ]
+}
